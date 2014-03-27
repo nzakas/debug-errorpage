@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--
+
+Portions of this file are from the Play Framework v1.x
+
+Copyright 2010
+
+    Guillaume Bort (http://guillaume.bort.fr)
+    zenexity (http://www.zenexity.fr)
+    Play framework contributors (https://github.com/playframework/play/contributors)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html>
+    <head>
+        <title>Application error</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    </head>
+    <body>
+
+<style type="text/css">
+    html, body {
+        margin: 0;
+        padding: 0;
+        font-family: Helvetica, Arial, Sans;
+        background: #EEEEEE;
+    }
+    .block {
+        padding: 20px;
+        border-bottom: 1px solid #aaa;
+    }
+    #header h1 {
+        font-weight: normal;
+        font-size: 28px;
+        margin: 0;
+    }
+    #more {
+        color: #666;
+        font-size: 80%;
+        border: none;
+    }
+    #header {
+        background: #fcd2da;
+    }
+    #header p {
+        color: #333;
+    }
+    #source {
+        background: #f6f6f6;
+    }
+    #source h2 {
+        font-weight: normal;
+        font-size: 18px;
+        margin: 0 0 10px 0;
+    }
+    #source .lineNumber {
+        float: left;
+        display: block;
+        width: 40px;
+        text-align: right;
+        margin-right: 10px;
+        font-size: 14px;
+        font-family: monospace;
+        background: #333;
+        color: #fff;
+    }
+    #source .line {
+        clear: both;
+        color: #333;
+        margin-bottom: 1px;
+    }
+    #source pre {
+        font-size: 14px;
+        margin: 0;
+        overflow-x: hidden;
+    }
+    #source .error {
+        color: #c00 !important;
+    }
+    #source .error .lineNumber {
+        background: #c00;
+    }
+    #source a {
+        text-decoration: none;
+    }
+    #source a:hover * {
+        cursor: pointer !important;
+    }
+    #source a:hover pre {
+        background: #FAFFCF !important;
+    }
+    #source em {
+        font-style: normal;
+        text-decoration: underline;
+        font-weight: bold;
+    }
+    #source strong {
+        font-style: normal;
+        font-weight: bold;
+    }
+</style>
+
+    <div id="header" class="block">
+        <h1>
+            Error!
+        </h1>
+                <p>
+            <strong>{{status}} Error</strong> occurred : {{message}}
+        </p>
+                    </div>
+        <div id="source" class="block">
+        <h2>In {{filename}} (around line {{lineNumber}})</h2>
+
+        {{#lines}}
+
+                <div class="line {{#error}}error{{/error}}">
+                    <span class="lineNumber">{{number}}:</span>
+                    <pre>&nbsp;{{code}}</pre>
+                </div>
+        {{/lines}}
+
+        </div>
+        <div id="more" class="block">
+            <pre>{{stack}}</pre>
+    </div>
+
+
+    </body>
+</html>
